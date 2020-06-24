@@ -1,0 +1,18 @@
+{
+  "name": "lab5udp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "electron": "latest",
+    "electron-reload": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "cd server && nodemon --exec \"node server.js\"",
+    "client1": "set port=4001&& nodemon --exec \"electron .\"",
+    "client2": "set port=4002&& nodemon --exec \"electron .\""
+  }
+}
