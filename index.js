@@ -1,15 +1,21 @@
-const { ipcRenderer  } = require('electron')
+const { ipcRenderer } = require('electron')
 
-var EmitMessage = require("electron").remote.app.emit;
+// var EmitMessage = require("electron").remote.app.emit;
 
 function SendMessage(func, data = null) {
-  EmitMessage("message", {
+  // EmitMessage("message", {
+  //   "func": func,
+  //   "data": data
+  // });
+
+  ipcRenderer.send('Message', {
     "func": func,
     "data": data
   });
+
 }
 
- const myFunctionList = {};
+const myFunctionList = {};
 
 ipcRenderer.on("message", (event, data) => {
   try {
@@ -17,6 +23,8 @@ ipcRenderer.on("message", (event, data) => {
   } catch (err) {
   }
 });
+
+
 
 myFunctionList.UpdateChat = (data) => {
 

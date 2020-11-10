@@ -2,6 +2,8 @@ var {app, BrowserWindow,} = require("electron");
 var path = require("path");
 var url  = require("url");
 
+const { ipcMain  } = require('electron')
+
 require("electron-reload")(__dirname + "/app/index.html", {
   electron: path.join(__dirname, "node_modules", ".bin", "electron")
 });
@@ -27,7 +29,8 @@ var myFunctionList = {};
 
 //  messages from window
 
-app.on("message", (data) => {
+ipcMain.on("Message", (event, data) => {
+  console.log(data)
   try{
     myFunctionList[data.func](data.data);
   }catch(err){
